@@ -1,0 +1,22 @@
+.result
+  %h3
+    = raw result[:user] + ' &bull; ' + result[:folder]
+  %blockquote
+    = simple_format(simple_format(strip_tags(result[:message].truncate(1000))).split('<br />')[14..-1].join('<br />').to_s)
+  %button.btn.btn-primary{ data: { toggle: 'modal', target: "#result-#{result[:id]}" } }
+    SEE ENTIRE MESSAGE
+  %hr
+
+  .modal.fade{ id: "result-#{result[:id]}" }
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+            %span{"aria-hidden" => "true"} &times;
+          %h4.modal-title 
+            = raw result[:user] + ' &bull; ' + result[:folder]
+        .modal-body
+          %p 
+            = simple_format(strip_tags(result[:message]))
+        .modal-footer
+          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close

@@ -1,0 +1,14 @@
+%h1
+  Search the Enron Emails
+
+.well
+  This app allows you to quick search all 500K emails sent within Enron before the investigations into fraud began.
+
+= text_field_tag :query, '', class: 'form-control', id: 'quick-search'
+
+%h4#count
+%hr
+
+.results
+
+#paginate{ data: { page: 0, enable: 'false' } }

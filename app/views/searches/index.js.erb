@@ -1,0 +1,6 @@
+<% if @page > 0 %>
+  $('.results').append('<%= escape_javascript render partial: "result", collection: @result[:emails], as: "result" %>');
+<% else %>
+  $('#count').text('<%= @result[:hits] %> results');
+  $('.results').html('<%= escape_javascript render partial: "result", collection: @result[:emails], as: "result" %>');
+<% end %>
